@@ -1,0 +1,58 @@
+SHORT ANSWER
+
+1. Why do programmers use pseudocode?
+
+Programmers use pseudocode to develop algorithms. It is easy to read, and helps in the brainstorming process.
+
+2. If you run pseudocode on your computer what would happen?
+
+Nothing would happen if you ran pseudocode on your computer since it is not a programming language, but an informal syntax to aid in building programs.
+
+PROGRAMMING ASSIGNMENT
+
+1.
+
+INPUT first number
+INPUT second number
+IF first number is greater than second number THEN
+    PRINT first number
+ELSE IF second number is greater than first number THEN
+    PRINT second number
+ELSE IF first number is equal to second number THEN
+    PRINT "Numbers are equal"
+ELSE
+    PRINT "Not a valid number"
+END IF
+
+2. 
+
+FOR number 1 to 100
+    INPUT number
+    PRINT number
+    INCREMENT number
+END FOR
+
+3. 
+
+SET Object specificEntry equal TO name equals Kelli AND number equals 5556667777
+FUNCTION findEntry(entry)
+    IF entry equals specificEntry THEN
+        PRINT specificEntry
+    ELSE
+        PRINT "Wrong entry"
+    END IF
+END FUNCTION
+
+4. 
+
+const specificEntry = {
+    name: "Kelli",
+    number: 5556667777
+};
+function findEntry(entry){
+    if(entry === specificEntry){
+        return specificEntry;
+    } else {
+        return "Wrong entry"
+    }
+}
