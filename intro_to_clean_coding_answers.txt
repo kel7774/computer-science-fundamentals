@@ -1,0 +1,111 @@
+1. In your own words, explain what clean code is and why it is important.
+
+Clean coding is coding in such a way that makes your code more readable. It's a balance between being descriptive in your naming conventions, aware of how many levels deep you nest your code, and avoiding repetition. Clean coding makes use of certain principles in order to help developers reuse their code, and for other developers to know exactly what that code will do.
+
+2. ... think about another commonly used object that relies on computers and explain what would happen if the code was not created to an acceptable standard.
+
+Another commonly used object that relies heavily on computers are POS (Point of Sale) systems that are used in restaurants, small business, ect. Should the code not be up to a certain standard, hundreds to thousands of customers would be affected. The company using the POS system could lose several hundred or thousand dollars at a time, and then lose customers. The customer could be under or overcharged, or their credit card information could be at risk. There are hundreds of scenarios for both the business and the customer that could potentially turn out harmful if the source code is not up to standard and/or using clean code standards.
+
+3. The following is not clean code for many reasons. There are way too many comments, so the code is not self-documenting. It does pass a squint test since it's difficult to see patterns within the code's structure. Related to this, it also looks like the code is not appropriately nested in order to see the logic of the code. The naming patterns are confusing, and should be using more specific variable and function names about what the code is going to actually do. 
+
+FUNCTION convertTemperature(celsius, fahrenheit)
+    IF fahrenheit = "F" THEN 
+        SET convertedTemperature to (celcius - 32) * (5/9) degrees fahrenheit to celcius
+    Print convertedTemperature
+    ELSE IF fahrenheit = "C" THEN
+        check if equal to "C"
+        SET convertedTemperature to celcius * 1.8000 + 32.00 degrees celcius to fahrenheit
+    Print convertedTemperature
+    END IF
+END FUNCTION
+
+4. The following looks like an example of clean code. The naming conditions meet standards where you understand what the function will do and what the variables mean. It uses appropriate nesting to see the logic of the code, and with that, it passes the Squint Test. It is an SRP function and only executes one task. The code is self-documenting, and does not rely on comments to explain what it will do. It does not repeat anything within the code that has to be stored in another variable, and needs no extraction.
+
+5. 
+
+A.
+
+FUNCTION checkOutCustomer(subTotal, discountRate, paymentType)
+    SET total to subTotal * discountRate + (subTotal * tax)
+    PRINT "Your total due is: " + total
+    IF paymentType = 'CASH' THEN
+        SET changeInCash to amount - subTotal * discountRate + (subTotal * tax)
+        CALL getPayment RETURNING changeInCash
+        PRINT "Change due: " + changeInCash
+    ELSE IF paymentType = 'CREDIT CARD' THEN
+        SET creditCharge to subTotal * discountRate + (subTotal * tax)
+        CALL getPayment RETURNING creditCharge
+        PRINT "Your credit card has been charged: " + creditCharge
+    END IF
+END FUNCTION
+
+B. 
+
+FUNCTION checkoutBook(book, guest)
+    IF guest.accountActive AND guest.outstandingFees = 0 THEN
+        APPEND book to guest.books
+        SET book.status to "Checked Out"
+        PRINT "Your books have been issued."
+    ELSE IF guest.hasOverdueBooks THEN
+        PRINT "Unable to check out book."
+    END IF
+END FUNCTION
+
+C. 
+
+CLASS BankAccount
+    FUNCTION displayBalance
+        PRINT balance
+    END FUNCTION
+
+    FUNCTION deposit(amount)
+        SET balance to balance + amount
+    END FUNCTION
+
+    FUNCTION withdraw(amount)
+        IF balance > amount THEN
+            SET balance to balance - amount
+        END
+    END FUNCTION
+END CLASS
+
+CLASS Offer
+    FUNCTION creditCardOffer
+        IF NOT(customer.hasCreditCard) THEN
+            CALL offerCheckingAccount
+        END
+    END FUNCTION
+
+    FUNCTION checkStatus
+        IF NOT(customer.hasCheckingAccount) THEN
+            CALL offerCheckingAccount
+        END
+    END FUNCTION
+END CLASS
+
+6.
+
+function perfectSquare(numbers){
+  const addNumbers = (num1, num2) => num1 + num2;
+  const sumOfNumbers = numbers.reduce(addNumbers);
+  const isPerfectSquare = sumOfNumbers % Math.sqrt(sumOfNumbers) === 0;
+  if (isPerfectSquare){
+    return Math.sqrt(sumOfNumbers);
+  } else if (numbers !== isPerfectSquare){
+    return sumOfNumbers;
+  }
+}
+
+7. 
+
+function isDuplicate(arr){
+  for(let i = 0; i <= arr.length; i++){
+    for(let j = 0; j <= arr.length; j++){
+      if(i !== j && arr[i] == arr[j]){
+        return true;
+      }
+    }
+  }
+  return false;
+}
+
