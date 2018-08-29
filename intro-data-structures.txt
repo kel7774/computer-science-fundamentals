@@ -1,0 +1,43 @@
+1. Given the above real-world information, use an array data structure to code the following solution.
+
+1a.
+INIT members to an empty array
+SET members[FIRST INDEX] to Vivian
+SET members[SECOND INDEX] to Ava
+SET members[THIRD INDEX] to Josh
+SET members[FOURTH INDEX] to Patrick
+SET members[FIFTH INDEX] to Mike
+
+//Code: let members = ["Vivian", "Ava", "Josh", "Patrick", "Mike"];
+
+
+1b.
+SET members[SIXTH INDEX] to Mary
+//Code: members.push("Mary");
+
+1c.
+FIND indexOf Josh in members array
+//Code: members.indexOf("Josh");
+
+1d.
+SEARCH Emily in members array
+//Code: members.includes("Emily");
+//The function should return false if it does not find Emily within the array
+
+1e.
+INSERT Melissa before Ava in members array
+//Code: members.splice(1, 0, "Melissa");
+
+1f.
+REMOVE Patrick from members array
+//Code: let patrickIndex = members.indexOf("Patrick");
+members.splice(patrickIndex, 1);
+
+
+2. Provide another real-world example that you can model using a data structure.
+
+Another real life example of a data structure would be the hierarchy of a company, and how each department is organized. You have an executive board, and within the executive board, you have different departments that each board member oversees. People will switch departments, be in charge of hiring and firing employees, and be in charge of promoting or demoting employees. A data structure would be useful to access and organize a company to keep track of changes within.
+
+3. How would your data structure allow developers to access and manipulate the data?
+
+My data structure would allow developers to see within the hierarchy of organization and be able to determine where they need to access specific items because of the way information is nested throughout. It should be logical and make sense to other programmers.
