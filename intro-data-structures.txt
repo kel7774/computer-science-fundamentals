@@ -12,26 +12,53 @@ SET members[FIFTH INDEX] to Mike
 
 
 1b.
-SET members[SIXTH INDEX] to Mary
-//Code: members.push("Mary");
+FUNCTION add(name)
+    ADD name to the end of of the array
+END FUNCTION
+//Code:
+const add = name => {
+    members.push(name);
+};
 
 1c.
-FIND indexOf Josh in members array
-//Code: members.indexOf("Josh");
+FUNCTION findMemberIndex(name)
+    FIND index of name in members
+END FUNCTION
+//Code:
+let findMemberIndex = name => {
+    members.indexOf(name);
+};
 
 1d.
-SEARCH Emily in members array
-//Code: members.includes("Emily");
-//The function should return false if it does not find Emily within the array
+FUNCTION isMemberPresent(name)
+    FIND name in members array
+END FUNCTION
+//Code:
+let isMemberPresent = name => {
+    members.includes(name);
+};
+//The function should return false if it does not find Emily within the members array
 
 1e.
-INSERT Melissa before Ava in members array
-//Code: members.splice(1, 0, "Melissa");
+FUNCTION insertMember(memberOne, memberTwo)
+    INSERT memberOne before memberTwo in members array
+END FUNCTION
+//Code:
+let insertMember = (memberOne, memberTwo) => {
+    const index = members.indexOf(memberOne);
+    members.splice(index, 0, memberTwo);
+};
 
 1f.
-REMOVE Patrick from members array
-//Code: let patrickIndex = members.indexOf("Patrick");
-members.splice(patrickIndex, 1);
+FUNCTION removeMember(member)
+    FIND index of member
+    DELETE member from members array
+END FUNCTION
+//Code:
+let removeMember = member => {
+    let memberIndex = members.indexOf(member);
+    members.splice(memberIndex, 1);
+};
 
 
 2. Provide another real-world example that you can model using a data structure.
