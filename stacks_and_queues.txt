@@ -1,0 +1,77 @@
+####Exercises
+
+1. What is the main difference between a stack and a queue?
+
+A stack structure implements a LIFO (Last In First Out) priority. It provides a pop and push function.A queue are different in that they arrange events for applications to tolerate tasks that need to be prioritized a certain way. It uses FIFO or First In First Out priority.
+
+2. What are the similarities between stacks and queues?
+
+They are similar in that nothing can be pulled from the middle, it’s either taken from the top of the stack or queue or the bottom. They are both structures where elements are stored and retrieved.
+
+3. Imagine you are an engineer tasked with implementing the UNDO and REDO options in a word processor such as Microsoft Word. Which data structure would you use for each option and why?
+
+For the UNDO option, I would use a stack since it utilizes the LIFO. Whichever tasks that just happened, the last task, would need to be the first one out for an UNDO option. For the REDO option, I would use a queue since it utilizes the FIFO. Whatever happened first, would be the first option out, which would be consistent with a REDO function.
+
+####Programming Questions
+
+1. Given a string, reverse it using a stack. For example, the string "Bloc!" should be converted to "!colB".
+
+let array = [];
+let reversed = "";
+
+let reverseStack = phrase => {
+  for (let i = 0; i < phrase.length; i++){
+    array.push(phrase[i]);
+  }
+  for (let i = 0; i < phrase.length; i++){
+    reversed += array.pop();
+  }
+  return reversed;
+};
+
+reverseStack("Kelli");
+
+2. Implement the pop method of a stack using one queue. Make a FIFO data structure mirror the functionality of a LIFO data structure. Since the internal list is not the same as defined in the checkpoint, it may help to rewrite the pseudocode first.
+
+let array = ["first", "second", "last"];
+
+const queued = element => {
+    let newArray = [];
+    for(let i = element.length - 1; i >= 0; i--){
+        newArray.push(element[i]);
+    }
+    return newArray.pop();
+}
+
+queued(array);
+
+1. Implement the enqueue and dequeue methods defined in the checkpoint inside your own Queue class.
+
+function Queue() {
+  stack = [];
+  this.display = () => {
+    console.log(stack);
+  };
+  this.enqueue = (item) => {
+    stack.push(item);
+  };
+  this.dequeue = () => {
+    return stack.shift();
+  };
+}
+
+
+
+let newStack = new Queue();
+
+
+console.log(newStack.enqueue("First In"));
+console.log(newStack.enqueue("Second In"));
+console.log(newStack.enqueue("Last In"));
+console.log(newStack.display());
+console.log(newStack.dequeue());
+console.log(newStack.display());
+console.log(newStack.dequeue());
+console.log(newStack.display());
+console.log(newStack.dequeue());
+console.log(newStack.display());
