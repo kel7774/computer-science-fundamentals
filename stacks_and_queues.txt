@@ -10,7 +10,7 @@ They are similar in that nothing can be pulled from the middle, it’s either ta
 
 3. Imagine you are an engineer tasked with implementing the UNDO and REDO options in a word processor such as Microsoft Word. Which data structure would you use for each option and why?
 
-For the UNDO option, I would use a stack since it utilizes the LIFO. Whichever tasks that just happened, the last task, would need to be the first one out for an UNDO option. For the REDO option, I would use a queue since it utilizes the FIFO. Whatever happened first, would be the first option out, which would be consistent with a REDO function.
+I would use a stack data structure with two stacks. For the REDO, you would have your own stack for all of the commands that you used UNDO in. UNDO would have it's own stack. When a command is popped off the undo stack, it's pushed into the redo stack. 
 
 ####Programming Questions
 
