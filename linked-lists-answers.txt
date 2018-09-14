@@ -1,0 +1,102 @@
+1. What are some pros and cons of using linked lists instead of arrays?
+
+Pros: Each node is independent of memory so the operating system will use available memory location to store it which means linked lists can grow to immense sizes which is good for scalability. A linked list can easily insert or remove elements without reorganizing the entire structure since they aren't stored contiguously.
+
+Cons: Because each node can exist anywhere in memory, it can be hard and inefficient to access an element within the list since you have to start from the beginning or head. With an array, elements can be accessed with indices which means searching for a specific element is slow.
+
+2. Come up with a real world example of a linked list.
+
+A real world example for a linked list would be a scavenger hunt. Each task is linked to another task, so it has a "reference" to each previous and next task at whatever current one you're viewing. These can be done in order, but are not contiguous as you can do the scavenger hunt out of order, but still be referred to the previous and next task from each current task you are viewing.
+
+1. The linked list push function should take a value, create a node, and add it to the end of a list. Below is pseudocode for a push function for a singly linked list. However, there is something wrong with it. Submit both an explanation of the bug and a functional implementation of the method.
+
+The bug lies within the else statement. The else statement is inserting the new node right after the head and not taking into account the full list. To fix this, you would need to loop through all of the nodes to find the tail of the list so you can insert it there. This code takes a risk with making orphaned nodes since it doesn't loop through all of the list. To fix it, you would want to insert a while loop within the else statement.
+
+FUNCTION push(element)
+CREATE node
+SET node.value TO element
+SET node.next TO null
+
+IF the head node does not exist
+    THEN SET head to node
+ELSE
+    CREATE current
+    SET current TO head
+    WHILE current.next
+        SET current TO current.next
+    END WHILE
+SET current.next TO node
+END IF
+END FUNCTION
+
+2. Given an unsorted singly linked list, remove all duplicates from the linked list.
+Example
+Input: a -> c -> d -> d -> a
+Output: a -> c -> d
+
+class LinkedList{
+  constructor(){
+    this.head = null;
+  } 
+}
+
+class Node{
+  constructor(val){
+    this.value = val;
+    this.next = null;
+  }
+}
+
+function removeDuplicates(list){
+  
+  var current;
+  var existing = [];
+  
+  current = list.head;
+  existing.push(current.value);
+ 
+  while(current.next){
+    if(existing.indexOf(current.next.value) != -1){
+       current.next = current.next.next;
+     } else {
+       existing.push(current.next.value);
+       current = current.next;
+     }
+  }
+  
+  return list;
+}
+
+let ll = new LinkedList();
+let n1 = new Node('a');
+let n2 = new Node('c');
+let n3 = new Node('d');
+let n4 = new Node('d');
+let n5 = new Node('a');
+
+n1.next = n2;
+n2.next = n3;
+n3.next = n4;
+n4.next = n5;
+ll.head = n1;
+
+console.log(ll);
+console.log(removeDuplicates(ll));
+
+Given an unsorted singly linked list, reverse it.
+Example
+Input: a -> b -> c -> d
+Output: d -> c -> b -> a
+
+let reverse = list => {
+  let node = list.head;
+  let prev = null;
+  
+  while(node){
+    let save = node.next;
+    node.next = prev;
+    prev = node;
+    node = save;
+  }
+  return prev;
+}
