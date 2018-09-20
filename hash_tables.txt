@@ -1,32 +1,188 @@
-let customerData = new Map();
+1. What is a hash table?
+A hash table is a type of data structure that stores a value by linking that value to a key forming a key/value pair. It’s similar to objects in JavaScript.
 
-let customer = {
-  name: "Kelli",
-  phoneNumber: 1234567890,
-  address: "123 Main St."
+2. What is hashing?
+Hashing is the process of converting a string to a numerical value which is called a hash code.
+
+3. How does a hash table store data?
+Hash tables store data similar to arrays as collections of similar data. They store data by giving a chunk of data an identifier that can be accessed by a particular key.
+
+4. How are hash tables and objects different?
+They keys of an object are strings and symbols, but they keys of a hash table can be functions, objects, and any primitive.The size of a hash table can be found with the `size` property, but an object’s size has to be determined manually.A hash table is iterable directly, but an object has to be iterated by getting its keys and then iterating through it. A hash table can perform better when you frequently add and remove key/value pairs.
+
+5.
+A list of pets and their unique names. -Hash table
+The name, age, and the birthday of your best friend. -Object
+The name and location of every company in a given city. -Hash table
+All of the books checked out from a library by a particular individual. -Object
+The primary and secondary phone numbers for a contact. -Hash table
+
+6. Build a system that allows a sales associate to enter a customer's name, address, and phone number into the system and look up customers using their phone numbers. Store this information in a hash table.
+
+
+
+let hash = (string, capacity) => {
+  let index = 0;
+  for(let i = 0; i < string.length; i++){
+    index += string.charCodeAt(i);
+  }
+  return index % capacity;
 };
 
-customerData.set(customer.phoneNumber, customer);
-console.log(customerData.get(1234567890));
+let HashTable = function() {
+  let data = [];
+  let max = 20;
 
-
-
-let storeInventory = new Map();
-
-let inventory = {
-  grocery: {
-    items: "groceries",
-    amount: 45,
-  },
-  toiletries: {
-    items: "paper goods",
-    amount: 68
-  },
-  outdoor: {
-    items: "outdoor items",
-    amount: 37
+  this.add = (key, value) => {
+    let index = hash(key, max);
+    if(data[index] === undefined){
+      data[index] = [[key, value]];
+    } else {
+      let existing = false;
+      for(let i = 0; i < data[index].length; i++){
+        if(data[index][i][0] === key) {
+          data[index][i][1] = value;
+          existing = true;
+        }
+      }
+      if(existing === false){
+        data[index].push([key, value]);
+      }
+    }
+  };
+  this.find = key => {
+    let index = hash(key, max);
+    if(data[index] === undefined) {
+      return undefined;
+    } else {
+      for(let i = 0; i < data[index].length; i++){
+        return data[index][i][1];
+      }
+    }
   }
 };
 
-storeInventory.set(inventory.grocery.items, inventory);
-console.log(storeInventory.get("groceries"));
+class Customer{
+  constructor(name, address, phone){
+    this.name = name;
+    this.address = address;
+    this.phone = phone;
+  }
+}
+
+
+let ht = new HashTable();
+
+
+let christina = new Customer("Christina Benoit", "100 Central", "666-666-6666");
+
+let kelli = new Customer ("Kelli Landry", "21 Jump St", "555-666-7777");
+
+ht.add('555-666-7777', kelli);
+console.log(ht.find('555-666-7777'));
+
+
+ht.add('666-666-6666', christina);
+
+console.log(ht.find("666-666-6666"));
+
+let rachel = new Customer("Rachel Rodrigue", "77 Lucky St.", "999-888-7777");
+ht.add('999-888-7777', rachel);
+console.log(ht.find('999-888-7777'));
+
+
+
+
+
+7. Build a system that allows a store owner to track their store's inventory using a hash table for storage.
+
+class Inventory {
+  constructor(item, price, quantity){
+    this.item = item;
+    this.price = price;
+    this.quantity = quantity;
+  }
+}
+
+let womensShorts = new Inventory("Women's shorts", "$30.99", 5);
+let mensPants = new Inventory ("Men's pants", "$49.99", 7);
+let scarves = new Inventory ("Scarf", "$10.99", 11); 
+
+let storeMap = new Map();
+
+let add = (key, value) => {
+  storeMap.set(key, value);
+  return `You have added ${value.quantity} ${value.item}(s) at ${value.price}/each .`;
+}
+
+let find = (string) => {
+  let desiredItem = storeMap.get(string);
+  if(desiredItem === undefined){
+    console.log("No item found.");
+  } else {
+    return `Found ${desiredItem.quantity} ${desiredItem.item}(s) that costs ${desiredItem.price}/each.`;
+  }
+}
+
+let viewAll = () => {
+  let totalInventory = storeMap.forEach((value, key) => {
+    console.log(`Total inventory - ${value.quantity} ${value.item}(s) ${value.price}/each`);
+  });
+}
+
+console.log(add("scarves", scarves));
+console.log(add("men's pants", mensPants));
+console.log(add("women's shorts", womensShorts));
+console.log(find("scarves"));
+console.log(find("women's shorts"));
+console.log(find("men's pants"));
+console.log(viewAll());
+
+
+
+
+Build a system that allows digital copies of newspapers to be entered and searched by publisher and publication date. Use hash tables to store the necessary data.
+
+class NewsPaper {
+  constructor(publisher, date, article){
+    this.publisher = publisher;
+    this.date = date;
+    this.article = article;
+  }
+}
+
+let newYorkTimes = new NewsPaper("New York Times", 
+"9/18/1990", "Article 1");
+let washingtonPost = new NewsPaper("Washington Post", "4/7/1989", "Article 2");
+let chicagoTribune = new NewsPaper("Chicago Tribune", "6/15/1999", "Article 3");
+
+let newsMap = new Map();
+
+let addPaper = (publisher, obj) => {
+  newsMap.set(publisher, obj);
+  console.log(`Added paper: ${publisher}`);
+}
+
+let findByPublisher = publisher => {
+  newsMap.forEach((value, key) => {
+    if(value.publisher === publisher){
+      console.log(`${value.publisher}, ${value.date}, ${value.article}`);
+    }
+  });
+}
+
+let findByDate = date => {
+  newsMap.forEach((value, key) => {
+    if(value.date === date ){
+      console.log(`${value.publisher}, ${value.date}, ${value.article}`);
+    }
+  });
+}
+
+console.log(addPaper("New York Times", newYorkTimes));
+console.log(addPaper("Washington Post", washingtonPost));
+console.log(addPaper("Chicago Tribune", chicagoTribune));
+console.log(findByPublisher("New York Times"));
+console.log(findByDate("9/18/1990"));
+console.log(findByPublisher("Chicago Tribune"));
+console.log(findByDate("6/15/1999"));
