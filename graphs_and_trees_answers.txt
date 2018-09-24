@@ -79,7 +79,12 @@ bst.contains(222);
 
 2. Given a Binary Search Tree and two nodes, n1 and n2, write a function that finds the distance between the two nodes.
 
-BST.prototype.findDistance = function(node1, node1, depth) {
-  if(node1 || node2) return depth++;
-  if(node1 < node2)
+BST.prototype.findDist = function(value1, value2, depth){
+   depth = 0;
+   if(value1 === this.value) return depth;
+   else if(value1 < this.value){
+     return depth++;
+   } else if(value > this.value){
+     return depth--;
+   }
 }
