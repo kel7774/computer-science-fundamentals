@@ -79,13 +79,13 @@ bst.contains(222);
 
 2. Given a Binary Search Tree and two nodes, n1 and n2, write a function that finds the distance between the two nodes.
 
-BST.prototype.findDist = function(value1, value2){
-   let depth = 0;
-   if(value1 || value2 === this.value){
-    return depth;
-   } else if(value1 < this.value){
-     return depth++;
-   } else if(value > this.value){
-     return depth--;
-   }
+
+BST.prototype.lowestCommonAncestor = function(root, n1, n2){
+  if(root.value > n1.value && root.value > n2.value){
+    return lowestCommonAncestor(root.left, n1, n2);
+  }else if(root.val < n1.value && root.value < n2.value){
+    return lowestCommonAncestor(root.right, n1, n2);
+  } else {
+    return root;
+  }
 }
