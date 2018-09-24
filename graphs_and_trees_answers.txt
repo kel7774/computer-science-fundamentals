@@ -79,13 +79,43 @@ bst.contains(222);
 
 2. Given a Binary Search Tree and two nodes, n1 and n2, write a function that finds the distance between the two nodes.
 
-
 BST.prototype.lowestCommonAncestor = function(root, n1, n2){
-  if(root.value > n1.value && root.value > n2.value){
-    return lowestCommonAncestor(root.left, n1, n2);
-  }else if(root.val < n1.value && root.value < n2.value){
-    return lowestCommonAncestor(root.right, n1, n2);
+  if(root > n1 && root > n2){
+    return this.left.value;
+  } else if (root < n1 && root < n2){
+    return this.right.value;
   } else {
-    return root;
+    return root.value;
   }
 }
+
+BST.prototype.distance = function (n1, n2){
+  let currentNode = this.lowestCommonAncestor(n1, n2);
+  let count1 = 0;
+  let count2 = 0;
+  let dist1 = currentNode => {
+    if(n1 === currentNode){
+      count1 = count1;
+    } else if(n1 < currentNode && currentNode.left !== null){
+      count1++
+      dist1(currentNode.left);
+    } else if(n1 > currentNode && currentNode.right !== null){
+      count1++;
+      dist1(currentNode.right);
+    }
+    return count1;
+  }
+  let dist2 = currentNode => {
+    if(n2 === currentNode){
+      count2 = count2;
+    } else if(n2 < currentNode && currentNode.left !== null){
+      count2++
+      dist2(currentNode.left);
+    } else if(n2 > currentNode && currentNode.right !== null){
+      count2++
+      dist2(currentNode.right);
+    }
+    return count2;
+  }
+  return dist1(currentNode) + dist2(currentNode) + console.log(count1 + count2);
+};  
