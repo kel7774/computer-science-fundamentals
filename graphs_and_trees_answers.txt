@@ -1,3 +1,5 @@
+Exercises:
+
 1. What is a binary tree and what makes it unique to other trees?
 
 A binary tree is a data structure made up of nodes that contain pointers on the left and right that also contain a data element. A binary tree has a "root" pointer which is the topmost part of the tree. The left and right nodes point to smaller trees or "subtrees" making it unique from a linked list in that you can build more complex structures with left and right nodes.
@@ -17,8 +19,67 @@ Breadth-First Search or BDS is a search that traverses the tree starting at the 
 
 5. Explain in your own words what an undirected, a-cyclic, unweighted graph is.
 
-A graph that doesn't loop since it's a-cyclic, do not assign the cost of travel since it's unweighted, and connection between two nodes is ambiguous because it neither starts nor ends at either node, just connects like a handshake since it's undirected.
+A graph that doesn't loop since it's a-cyclic, does not assign the cost of travel since it's unweighted and connection between two nodes is ambiguous because it neither starts nor ends at either node, just connects like a handshake since it's undirected.
 
 6. What kind of graph is a binary search tree?
 
 A binary search tree a undirected, a-cyclic, unweighted graph.
+
+
+Programming Questions
+
+
+1. Given a Binary Search Tree and a value, write a function that checks to see whether the value exists within the tree.
+
+function BST(value) {
+    this.value = value;
+    this.left = null;
+    this.right = null;
+}
+
+BST.prototype.insert = function(value) {
+    if(value <= this.value){
+        if(!this.left){
+            this.left = new BST(value);
+        } else {
+            this.left.insert(value);
+        }
+    } else if(value > this.value) {
+        if(!this.right){
+            this.right = new BST(value);
+        } else {
+            this.right.insert(value);
+        }
+    }
+}
+
+BST.prototype.contains = function(value) {
+  if(value === this.value){
+    return true;
+  } else if (value < this.value){
+    if(!this.left) return false;
+    else return this.left.contains(value);
+  } else if (value > this.value){
+    if(!this.right) return false;
+    else return this.right.contains(value);
+  }
+}
+
+let bst = new BST(50);
+
+bst.insert(100);
+bst.insert(200);
+bst.insert(350);
+bst.insert(17);
+bst.insert(56);
+bst.insert(95);
+
+bst.contains(100);
+bst.contains(222);
+
+2. Given a Binary Search Tree and two nodes, n1 and n2, write a function that finds the distance between the two nodes.
+
+BST.prototype.findDistance = function(node1, node1, depth) {
+  if(node1 || node2) return depth++;
+  if(node1 < node2)
+}
