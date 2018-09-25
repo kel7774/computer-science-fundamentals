@@ -30,6 +30,8 @@ Programming Questions
 
 
 1. Given a Binary Search Tree and a value, write a function that checks to see whether the value exists within the tree.
+2. Given a Binary Search Tree and two nodes, n1 and n2, write a function that finds the distance between the two nodes.
+
 
 function BST(value) {
     this.value = value;
@@ -114,3 +116,18 @@ BST.prototype.distance = function (n1, n2){
   }
   return dist1(currentNode) + dist2(currentNode);
 };  
+
+
+let bst = new BST(50);
+
+bst.insert(100);
+bst.insert(200);
+bst.insert(350);
+bst.insert(17);
+bst.insert(56);
+bst.insert(95);
+
+bst.contains(100);
+bst.contains(222);
+
+console.log(bst.distance(350, 95));
