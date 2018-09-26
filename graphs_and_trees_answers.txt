@@ -32,91 +32,105 @@ Programming Questions
 1. Given a Binary Search Tree and a value, write a function that checks to see whether the value exists within the tree.
 2. Given a Binary Search Tree and two nodes, n1 and n2, write a function that finds the distance between the two nodes.
 
-
-function BST(value) {
+class TreeNode {
+  constructor(value){
     this.value = value;
     this.left = null;
     this.right = null;
+  }
 }
 
-BST.prototype.insert = function(value) {
-    if(value <= this.value){
-        if(!this.left){
-            this.left = new BST(value);
+class BST {
+  constructor(){
+    this.root = null;
+  }
+  insert(value){
+    let newNode = new TreeNode(value);
+    if(!this.root){
+      this.root = newNode;
+    } else {
+      let currentNode = this.root;
+      let hasNodeInserted = false;
+      while(!hasNodeInserted){
+        if(newNode.value < currentNode.value){
+          if(!currentNode.left){
+            currentNode.left = newNode;
+            hasNodeInserted = true;
+          } else {
+            currentNode = currentNode.left;
+          }
         } else {
-            this.left.insert(value);
+          if(!currentNode.right){
+            currentNode.right = newNode;
+            hasNodeInserted = true;
+          } else {
+            currentNode = currentNode.right;
+          }
         }
-    } else if(value > this.value) {
-        if(!this.right){
-            this.right = new BST(value);
-        } else {
-            this.right.insert(value);
-        }
+      }
     }
-}
-
-BST.prototype.contains = function(value) {
-  if(value === this.value){
-    return true;
-  } else if (value < this.value){
-    if(!this.left) return false;
-    else return this.left.contains(value);
-  } else if (value > this.value){
-    if(!this.right) return false;
-    else return this.right.contains(value);
   }
-}
 
-BST.prototype.lowestCommonAncestor = function(root, n1, n2){
-  if(root > n1 && root > n2){
-    console.log(`Left: ${this.left}`);
-    console.log(`Left.value: ${this.left.value}`);
-    return this.left.value;
-  } else if (root < n1 && root < n2){
-    console.log(`Right: ${this.right}`);
-    console.log(`Right.value: ${this.right.value}`);
-    return this.right.value;
-  } else if(root === n1 && root === n2) {
-    console.log(`Root: ${root}`);
-    console.log(`Root.value: ${root.value}`);
-    return root.value;
-  }
-}
-
-BST.prototype.distance = function (n1, n2){
-  let currentNode = this.lowestCommonAncestor(n1, n2);
-  console.log(currentNode);
-  let count1 = 0;
-  let count2 = 0;
-  let dist1 = currentNode => {
-    if(n1 === currentNode){
-      count1 = count1;
-    } else if(n1 < currentNode && currentNode.left !== null){
-      count1++
-      dist1(currentNode.left);
-    } else if(n1 > currentNode && currentNode.right !== null){
-      count1++;
-      dist1(currentNode.right);
+  contains(value){
+    let currentNode = this.root;
+    while(currentNode){
+      if(value === currentNode.value){
+        return true;
+      } else if(value < currentNode.value){
+        currentNode = currentNode.left;
+      } else {
+        currentNode = currentNode.right;
+      }
     }
-    console.log(count1);
-    return count1;
+    return false;
   }
-  let dist2 = currentNode => {
-    if(n2 === currentNode){
-      count2 = count2;
-    } else if(n2 < currentNode && currentNode.left !== null){
-      count2++
-      dist2(currentNode.left);
-    } else if(n2 > currentNode && currentNode.right !== null){
-      count2++
-      dist2(currentNode.right);
-    }
-    console.log(count2);
-    return count2;
-  }
-  return dist1(currentNode) + dist2(currentNode);
-};  
 
+  lca(n1, n2) {
+    let currentNode = this.root;
+    while(currentNode){
+      if(n1 < currentNode.value && n2 < currentNode.value){
+        currentNode = currentNode.left;
+      } else if (n1 > currentNode.value && n2 > currentNode.value) {
+        currentNode = currentNode.right;
+      } else {
+        return currentNode;
+      }
+    }
+  }
+
+  distance(n1, n2){
+    let currentNode = this.lca(n1, n2);
+    let counter1 = 0;
+    let counter2 = 0;
+
+    let distance1 = currentNode => {
+      if(n1 < currentNode.value && currentNode.left !== null){
+        counter1++;
+        distance1(currentNode.left);
+      } else if(n1 > currentNode.value && currentNode.right !== null){
+        counter1++;
+        distance1(currentNode.right);
+      } else if(n1 === currentNode) {
+        counter1 = counter1;
+      }
+      return counter1;
+    }
+
+    let distance2 = currentNode => {
+      if(n1 < currentNode.value && currentNode.left !== null){
+        counter2++;
+        distance2(currentNode.left);
+      } else if(n1 > currentNode.value && currentNode.right !== null){
+        distance2(currentNode.right);
+        counter2++;
+      } else if(n2 === currentNode){
+        counter2 = counter2;
+      }
+      return counter2;
+    }
+    return distance1(currentNode) + distance2(currentNode);
+  }
+}
 
 let bst = new BST(50);
 
@@ -127,7 +141,7 @@ bst.insert(17);
 bst.insert(56);
 bst.insert(95);
 
-bst.contains(100);
-bst.contains(222);
-
-console.log(bst.distance(350, 95));
+console.log(bst);
+console.log(bst.contains(350));
+console.log(bst.contains(222));
+console.log(bst.distance(200, 17));
