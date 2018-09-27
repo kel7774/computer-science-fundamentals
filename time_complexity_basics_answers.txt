@@ -1,0 +1,17 @@
+1. What is time complexity and what is its relation to algorithms?
+
+2. What is runtime?
+
+3. How is the runtime of an algorithm calculated?
+
+4. Name the six types of algorithm growth rates we saw in this checkpoint and list them in order of most efficient to least efficient. Now Google another algorithmic growth rate not covered and place it in the correct spot in your list.
+
+5. Choose one of the algorithmic growth rates from the last question and make a comparison to a real-life situation.
+
+6. Determine the time complexity of the following snippet of code. It is commonly known as a linear search.
+
+7. Determine the time complexity of the following snippet of code.
+
+8. Determine the time complexity of the following snippet of code. It is commonly known as the Fibonacci sequence.
+
+9. Out of the code snippets you just saw, which is the most time efficient?
