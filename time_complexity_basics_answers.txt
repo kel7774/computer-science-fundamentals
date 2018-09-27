@@ -1,10 +1,30 @@
 1. What is time complexity and what is its relation to algorithms?
 
+Time complexity is a function that estimates how long it takes to execute a program. As it relates to an algorithms, time complexity looks at all of the steps in an algorithm and sees how long it will take to go through each step until the algorithm reaches completion.
+
 2. What is runtime?
+
+Runtime is the physical time duration of going through an algorithm.
 
 3. How is the runtime of an algorithm calculated?
 
+Runtime of an algorithm is calculated by adding up all of the instructions to be executed within it, then simplifying it to the largest term, dropping any constants.
+
 4. Name the six types of algorithm growth rates we saw in this checkpoint and list them in order of most efficient to least efficient. Now Google another algorithmic growth rate not covered and place it in the correct spot in your list.
+
+Constant Growth Rate: 0(1) - This is very efficient because the runtime does not change whether you process 1 or 10,000 pieces of data.
+
+Logarithmic Growth Rate: 0(log n) - This is mostly efficient because the runtime will grow by one unit everytime you double the input.
+
+Linear Growth Rate: 0(n) - This is efficient because the runtime of the function and the amount of data being processed is directly proportional. This happens for a single for loop. Runtime goes up as you loop through each element.
+
+Log-Linear Growth Rate: 0(n log n) - This is somewhat efficient since the rate halves the data for each of n times. This is common in sort and heap search. It takes longer since elements are paired, compared, then sorted, then paired again in another group, and so on, until every element is arranged in the way the algorithm wants.
+
+Quadratic Growth Rate: O(n^2) - This is barely efficient since the rate is directly proportional to the square of the size of the input. It is shaped like a parabola and usually involves nested data, such as a nested for loop thus having to loop through various data sets more more than once.
+
+Cubic Growth Rate: O(n^3) - This is also not very efficient since the rate is running in cubic time. When n triples, the runtime will increase in this fashion: n * n * n.
+
+Exponential Growth Rate: 0(2^n) - This rate is not efficient for the most part since the growth doubles with each additional input. As data grows, there is more to process, therefore the time becomes longer.
 
 5. Choose one of the algorithmic growth rates from the last question and make a comparison to a real-life situation.
 
