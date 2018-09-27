@@ -1,0 +1,35 @@
+1. Using proper pseudo-code, describe the following primitive algorithms:
+
+Making coffee;
+
+INIT coffeeScoops equals a number
+INIT cupsOfWater equals a number
+
+FUNCTION makeCoffee
+    IF coffeeScoops equals exactly cupsOfWater THEN
+        Make coffee
+    ELSE IF coffeeScoops does not equal exactly cupsOfWater THEN
+        IF coffeeScoops is greater than cupsOfWater THEN
+            SET coffeeScoops to equal cupsOfWater
+            Make coffee
+        ELSE
+            SET cupsOfWater to equal coffeeScoops
+            Make coffee
+        END IF
+    END IF
+END FUNCTION
+
+
+Washing dishes;
+
+INIT isDirty SET TO true
+
+FUNCTION cleanDishes 
+  IF isDirty equals true THEN
+    Log Cleaning dishes.
+  ELSE
+    LOG Dishes are clean.
+END FUNCTION
+
+
+A choice of your own.
