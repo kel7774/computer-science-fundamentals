@@ -33,3 +33,30 @@ END FUNCTION
 
 
 A choice of your own.
+Making a phone call
+
+INIT contact object PASS IN name, address, phoneNumber keys
+
+FUNCTION makeCall PASS IN contact.phoneNumber
+    INIT length EQUALS contact.phoneNumber.toString().length
+        IF length equals 10
+            DISPLAY Calling contact.name!
+        ELSE
+            DISPLAY You must enter a 10 digit phone number.
+        END IF
+END FUNCTION
+
+
+2. As with the knot algorithm, there may be more than one way to solve the problem. It is essential to try to pick the best algorithm for a situation. Name three companies who created an algorithm that made them successful, e.g., Google's search algorithm. It doesn't need to be a tech example (such as a recipe or manufacturing a product). Google's algorithm produces more relevant results than other search engines; what about each of your cases make them stand out?
+
+One company with a successful algorithm would be Spotify. They have a Discover Weekly feature that is a playlist. It uses an  algorithm that solves the problem of finding new music that you'll actually like and listen to. It's unique in that it doesn't just look at what you're listening to, but it combines what you're listening to with billions of other users' playlists to see if you and those users share similar tastes in music genres. It then combines this to put together a playlist for you to help you discover new music without having to search for it which to me is very convenient and saves time.
+
+Another company that I found interesting is Instagram and its use of hashtags, likes, and follows to suggest similar content in your feed. Part of their success is allowing the algorithm to take in what a user frequently likes or what kind of accounts that they follow to suggest following other users with similar content or to put out ads. It's successful in that many users take advantage of the algorithm to connect with others and grow their business. It makes networking that much easier, as it does it for you by connecting like minded accounts to you. It stands out among other social media platforms in that it's easy to like and follow accounts which takes a lot of the headache of manually finding people with similar content. 
+
+One company that I think everyone is thankful for considering their algorithm is Netflix with Suggestions for You. It's unique in that no other streaming service (that I know of) is making an effort to solve the problem of "What am I going to watch today?" and having the problem of scrolling for hours for something that may interest you. What's unique about it is that they use machine learning and form a "three-legged stool" of information to filter your suggestions. They understand implicit and explicit data. They look at it if you've physically liked something or if you've binged something in two or three days.
+
+3. Hypothesize about what constitutes an efficient algorithm versus an inefficient algorithm.
+
+An efficient algorithm seems like it will do a few things for the end user. Its aim should be to make something easier to do by doing it for the user much like the "Suggested for You" option for Netflix. It takes the work out of finding something. It should be fast or instant, and very accurate. It should also work with customization and be able to learn from patterns.
+
+An inefficient algorithm makes it harder for the end user to do something. For example, Facebook's algorithm with how you see friend's posts seems to be very inefficient (as I hear many of my friends complain about it, especially musicians). Facebook's algorithm skips over friends who you don't interact with as much, therefore you won't see their posts as often. You have to search for those people, which means more work. An inefficient algorithm is not customizable and doesn't continue to learn from patterns. It remains static with the information it has, and doesn't take into account the human factor of constant change.
