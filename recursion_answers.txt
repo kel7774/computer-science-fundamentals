@@ -1,8 +1,19 @@
 1. Define and compare recursion and iteration.
 
+Recursion is when a function calls itself which results in repeating the same steps until the function is complete. 
+Iteration is best defined with loops. A set of instructions is repeated, but in a specific amount of times until a condition is met.
+
 2. Name five algorithms that are commonly implemented by recursion.
 
+The fibonacci sequence
+The factorial operation
+How to see if a string is a palindrome
+Finding the nth node in a linked list
+Binary search involving breadth-first and depth-first traversal
+
 3. When should you use recursion, and when should you avoid recursion? Give examples for each.
+
+You should use recursion when you have to implement the same problem solving technique in every level of solving the issue. Such as the fibonacci sequence. It's a pattern that continuously uses adding the sum of the last and current number you received. This will happen every time you input a number. Recursion shouldn't be used when you have several steps of a problem that include different steps to solve the problem on each level. For example, if you have a restaurant menu that has 7 layers of data that needs to be iterated through, but on the 5th layer, there needs to be a 9% tax added, recursion would fail, because you cannot call the same function on that particular step.
 
 4. Compare the recursive and iterative solutions to the three algorithms from the checkpoint (factorial, maximum, and fibonacci). What is similar, and what is different?
 
@@ -11,3 +22,5 @@
 6. A palindrome is a word or phrase whose spelling is the same either direction (e.g., racecar). Write a recursive algorithm to determine if a given word or phrase is a palindrome.
 
 7. Google Easter Egg: Google the term "recursion". Google will prompt you with "Did you mean: recursion". Explain why this behavior exhibits properties of recursion.
+
+This behavior shows an "infinite loop" that mimicks recursion because as long as you click on the link from "Did you mean recursion", you'll always end up at the same page with those same results. None of the base cases or termination cases applied, therefore Google's recursive function was executed thus putting the user in a recursive loop or infinite loop.
