@@ -18,18 +18,32 @@ You should use recursion when you have to implement the same problem solving tec
 4. Compare the recursive and iterative solutions to the three algorithms from the checkpoint (factorial, maximum, and fibonacci). What is similar, and what is different?
 
 Factorial:
-Recursive:
-Iterative:
+Recursive: The recursive solution doesn't keep track of the result, but simply calls the function until it reaches a conclusion or its base case.
+Iterative: The iterative solution keeps track of the result in a variable to track the calculations.
+
+They both use if/else statements to account for negative numbers and 0's being passed into the function.
 
 Maximum:
-Recursive:
-Iterative:
+Recursive: The recursive solution works almost backwards by calling the function until it reaches its base case. Once it reaches the base case, it works backwords by caling itself through the collection of numbers until it finds the largest number.
+Iterative: The iterative solution is a little simpler in that we set the current maximum to the first number, then loop through the rest of the collection. You compare using an if/else if the current maximum is larger than your number you passed in, and you return your solution. 
+
+They both seem to loop through in their own unique ways, but the iterative version seems faster.
 
 Fibonacci:
-Recursive:
-Iterative:
+Recursive: In the recursive solution, it calls fibonacci(2)twice because the lower values have to be recalculated because of the base cases. It looks for the higher values.
+Iterative: The iterative solution skips over the first two problems, by saying that i has to be greater than or equal to 3 so you don't run the program to equal 1 at all since that's already known.
+
+In both solutions, each number is saved in a variable and will change as the program attempts to find the solution for the number passed in.
 
 5. Given a multi-dimensional collection (such as an array) where the number of dimensions is unknown, write a recursive algorithm to count the number of items in the entire collection.
+
+let collectionNumber = array => {
+  if(array.length){
+    return 1 + collectionNumber(array.slice(1));
+  } else {
+    return 0;
+  }
+};
 
 6. A palindrome is a word or phrase whose spelling is the same either direction (e.g., racecar). Write a recursive algorithm to determine if a given word or phrase is a palindrome.
 
@@ -42,6 +56,8 @@ let isPalindrome = str => {
     }
     return isPalindrome(str.slice(1, -1));
 };
+
+console.log(isPalindrome('racecar'));
 
 7. Google Easter Egg: Google the term "recursion". Google will prompt you with "Did you mean: recursion". Explain why this behavior exhibits properties of recursion.
 
