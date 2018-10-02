@@ -1,14 +1,50 @@
 Short Answer
 
 1. What is a real-life scenario that uses linear search?
+
+A real life linear search scenario would be looking through a spice rack to find the right seasoning. The spice rack likely doesn't grow all of the time, so you know that at best, you may have to search through 15-20 seasonings. You can go through each one in order pretty quickly until you find the one you are looking for. You'll most likely find it faster with linear search rather then dividing them into two groups.
+
 2. What is a real-life scenario that uses binary search?
+
+A real life binary search scenario would be trying on jeans to find the right fit. You have to use the "divide and conquer" attribute of binary search. You start with a bunch of different fits, and then decide that you don't like a particular color, so you don't try on dark wash jeans for example. Then you decide you don't like a bootcut, so you don't try on those anymore. It's a process of elimination until you find the exact pair of jeans that fit your style.
+
 3. Given the alphabetically sorted collection in this checkpoint, how many iterations would it take to find the value G using linear search?
+7 
+
 4. Given the alphabetically sorted collection in this checkpoint, how many iterations would it take to find the value G using binary search?
+3
+
 5. Given an unsorted collection of a million items, which algorithm would you choose between linear search and binary search? Explain your reasoning.
+
+I would use a linear search since the collection is unsorted. Since it's not sorted, doing a binary search would risk never finding the target item. If you discard one half of an unsorted list, you won't be able to iterate through it to check for that particular item. That's why going through every item using linear search would produce the result, however slow it would be.
+
 6. Given a sorted collection of a million items, which algorithm would you choose between linear search and binary search? Explain your reasoning.
+
+I would choose a binary search since the collection is sorted. It would be easier and faster since the binary search would divide the collection in half, and immediately discard whatever half doesn't meet the search criteria. 
+
 
 Programming Assignment
 
 1. You and a friend have set a wager to see who can find the word "Albatross" in the dictionary the fastest. Write a program to allow you to win the bet.
+
+function search (array, value) {
+  let begin = 0
+  let end = array.length - 1
+  let middle = Math.floor((begin + end) / 2)
+
+  while (array[middle] !== value && begin < end) {
+    if (value < array[middle]) {
+      end = middle - 1
+    } else {
+      begin = middle + 1
+    }
+    middle = Math.floor((begin + end) / 2)
+  }
+  return (array[middle] !== value) ? 'No value found' : middle
+}
+
+const dictionary = ['abbot', 'aching', 'addition', 'adjacent', 'ageing', 'albatross', 'ale', 'amicable', 'apple', 'appendix']
+console.log(search(dictionary, 'albatross'));
+console.log(search(dictionary, 'what'));
 
 2. You work at a pet store, and a child has asked you to net the only white-spotted goldfish from the fish tank. Write a program that will help you net the right fish.
