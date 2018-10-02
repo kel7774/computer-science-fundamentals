@@ -48,3 +48,16 @@ console.log(search(dictionary, 'albatross'));
 console.log(search(dictionary, 'what'));
 
 2. You work at a pet store, and a child has asked you to net the only white-spotted goldfish from the fish tank. Write a program that will help you net the right fish.
+
+function findFish(fishArray, value) {
+  for (var i = 0; i < fishArray.length; i++) {
+    if (fishArray[i] === value) {
+      return i;
+    }
+  } return null;
+}
+
+const array = ['black fish', 'black fish', 'white fish', 'white-spotted goldfish', 'goldfish', 'goldfish', 'white fish', 'white fish', 'goldfish'];
+
+console.log(findFish(array, 'white-spotted goldfish'));
+console.log(findFish(array, 'fish'));
