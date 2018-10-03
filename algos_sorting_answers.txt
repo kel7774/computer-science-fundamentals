@@ -44,6 +44,10 @@ END FUNCTION
 
 3. We talked about time complexity in a previous checkpoint, and how to get an idea of the efficiency of an algorithm. After looking at the pseudocode for the above sorting methods, identify why merge sort and quick sort are much more efficient than the others. Walking through each algorithm with a few sample collections may help.
 
+Merge sort is more efficient than most of the algorithms since it only has two steps. It breaks the collection of items down into sub-collections, sorts those, then merges the sub-collections into one collection. Quicksort uses a divide and conquer method which is also faster than other algorithms. It uses three steps to accomplish sorting. It selects a pivot point, compares each item to the pivot point determining if the value goes to the left or right and repeats this with each unsorted sub-collection. It's 
+
+Instead of scanning through all of the elements like most other algorithms, these two algorithms use a process of elimination or a divide and conquer type of strategy that is proven to be much faster when it comes to time complexity given the appropriate input.
+
 4. All of the sorts addressed in this checkpoint are known as comparison sorts. Research bucket sort and explain how it works. What is the ideal input for bucket sort?
 
 Bucket sort is a distribution sort algorithm. It separates items in a collection into buckets that are then sorted individually using different sort methods. The ideal input for bucket sort would be something that can be easily distributed, and when memory space is not an issue.
